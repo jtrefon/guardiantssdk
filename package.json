@@ -1,0 +1,38 @@
+{
+  "name": "guardianbcsdk",
+  "version": "1.0.0",
+  "description": "Guardian blockchain SDK for TypeScript",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "test": "mocha --reporter spec",
+    "lint": "tslint -p tslint.json",
+    "fix": "tslint -p tslint.json --fix"
+  },
+  "keywords": [
+    "blockchain",
+    "guardian",
+    "sdk",
+    "typescript",
+    "crypto"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "the repositories url"
+  },
+  "author": "Jacek Trefon <jack@trefon.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.0.2",
+    "crypto-js": "^3.1.9-1",
+    "jsencrypt": "^3.0.0-rc.1"
+  }
+}
