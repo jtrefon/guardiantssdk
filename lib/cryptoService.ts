@@ -2,7 +2,7 @@ import sha256 from "crypto-js/sha256";
 import * as jse from "jsencrypt";
 
 export class CryptoService {
-    protected KeySize = 1024;
+    protected KeySize = "1024";
     protected PublicKey: string = "";
     protected PrivateKey: string = "";
 
