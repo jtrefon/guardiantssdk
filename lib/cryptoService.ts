@@ -25,7 +25,8 @@ export class CryptoService {
     public Sign(payload: string, privateKey: string): string {
         const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(privateKey);
-        return jsEnc.sign(payload, sha256, "sha256");
+        const signature = jsEnc.sign(payload, sha256, "sha256");
+        return signature.toString();
     }
 
     /**
