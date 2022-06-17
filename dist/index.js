@@ -1,10 +1,9 @@
-var Guardianbcsdk = /** @class */ (function () {
-    function Guardianbcsdk() {
-    }
-    Guardianbcsdk.prototype.getWallet = function (publicKey) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+class Guardianbcsdk {
+    getWallet(publicKey) {
         return publicKey;
-    };
-    return Guardianbcsdk;
-}());
-export { Guardianbcsdk };
+    }
+}
+exports.Guardianbcsdk = Guardianbcsdk;
 //# sourceMappingURL=index.js.map

@@ -25,14 +25,14 @@
   "author": "Jacek Trefon <jack@trefon.com>",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "mocha": "^6.1.4",
-    "tslint": "^5.16.0",
-    "typescript": "^3.4.5"
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "tslint": "^6.1.3",
+    "typescript": "^4.7.3"
   },
   "dependencies": {
-    "cross-fetch": "^3.0.2",
-    "crypto-js": "^3.1.9-1",
-    "jsencrypt": "^3.0.0-rc.1"
+    "cross-fetch": "^3.1.5",
+    "crypto-js": "^4.1.1",
+    "jsencrypt": "^3.2.1"
   }
 }

@@ -1,7 +1,10 @@
-import sha256 from "crypto-js/sha256";
-import * as jse from "jsencrypt";
-var CryptoService = /** @class */ (function () {
-    function CryptoService() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const sha256_1 = tslib_1.__importDefault(require("crypto-js/sha256"));
+const jse = tslib_1.__importStar(require("jsencrypt"));
+class CryptoService {
+    constructor() {
         this.KeySize = 1024;
         this.PublicKey = "";
         this.PrivateKey = "";
@@ -10,22 +13,22 @@ var CryptoService = /** @class */ (function () {
      * Generates RSA key pair (default 1024)
      * keys are to be obtained via getPublicKey() and getPrivateKey()
      */
-    CryptoService.prototype.GenerateKeys = function () {
-        var jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+    GenerateKeys() {
+        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
         this.PrivateKey = jsEnc.getPrivateKey();
         this.PublicKey = jsEnc.getPublicKey();
-    };
+    }
     /**
      * This is RSA signing method
      * @param payload payload to sign
      * @param privateKey private key to sign with
      * @returns string type signature
      */
-    CryptoService.prototype.Sign = function (payload, privateKey) {
-        var jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+    Sign(payload, privateKey) {
+        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(privateKey);
-        return jsEnc.sign(payload, sha256, "sha256");
-    };
+        return jsEnc.sign(payload, sha256_1.default, "sha256");
+    }
     /**
      * RSA signature verification
      * @param payload data to compare signature against
@@ -33,34 +36,25 @@ var CryptoService = /** @class */ (function () {
      * @param publicKey RSA public key to verify signature with
      * @returns boolean true or false
      */
-    CryptoService.prototype.Verify = function (payload, signature, publicKey) {
-        var jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+    Verify(payload, signature, publicKey) {
+        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(publicKey);
-        return jsEnc.verify(payload, signature, sha256);
-    };
-    Object.defineProperty(CryptoService.prototype, "getPublicKey", {
-        /**
-         * RSA key accessor
-         * @returns public key as string
-         */
-        get: function () {
-            return this.PublicKey;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    Object.defineProperty(CryptoService.prototype, "getPrivateKey", {
-        /**
-         * RSA key accessor
-         * @returns private key as string
-         */
-        get: function () {
-            return this.PrivateKey;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    return CryptoService;
-}());
-export { CryptoService };
+        return jsEnc.verify(payload, signature, sha256_1.default);
+    }
+    /**
+     * RSA key accessor
+     * @returns public key as string
+     */
+    get getPublicKey() {
+        return this.PublicKey;
+    }
+    /**
+     * RSA key accessor
+     * @returns private key as string
+     */
+    get getPrivateKey() {
+        return this.PrivateKey;
+    }
+}
+exports.CryptoService = CryptoService;
 //# sourceMappingURL=cryptoService.js.map

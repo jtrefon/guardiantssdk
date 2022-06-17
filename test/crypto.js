@@ -1,4 +1,7 @@
 'use strict';
+global.navigator={};
+global.window={};
+
 var expect = require('chai').expect;
 var index = require('../dist/lib/cryptoService.js');
 var crypto;
@@ -10,9 +13,9 @@ describe('Testing Cryptographic layer', () => {
         this.crypto = new index.CryptoService;
     });
 
-    it('testing Get', () => {
+    it('testing private key gen', () => {
         this.crypto.GenerateKeys();
-        expect(this.crypto.getPrivateKey.length).to.equal(21);
+        expect(this.crypto.getPublicKey.length).to.equal(271);
     });
 
 

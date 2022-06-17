@@ -1,7 +1,9 @@
-import * as tslib_1 from "tslib";
-import fetch from "cross-fetch";
-var Transport = /** @class */ (function () {
-    function Transport() {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const cross_fetch_1 = tslib_1.__importDefault(require("cross-fetch"));
+class Transport {
+    constructor() {
         this.headers = {
             "Accept": "application/json",
             "Content-Type": "application/json",
@@ -12,65 +14,42 @@ var Transport = /** @class */ (function () {
      * @param url
      * @returns Promise
      */
-    Transport.prototype.get = function (url) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var response, e_1;
-            return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, fetch(url, {
-                                cache: "no-cache",
-                                headers: this.headers,
-                                redirect: "follow",
-                                referrer: "no-referrer",
-                            })];
-                    case 1:
-                        response = _a.sent();
-                        return [4 /*yield*/, response.json()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                    case 3:
-                        e_1 = _a.sent();
-                        throw new Error(e_1);
-                    case 4: return [2 /*return*/];
-                }
+    async get(url) {
+        try {
+            const response = await cross_fetch_1.default(url, {
+                cache: "no-cache",
+                headers: this.headers,
+                redirect: "follow",
+                referrer: "no-referrer",
             });
-        });
-    };
+            return await response.json();
+        }
+        catch (e) {
+            throw new Error(e);
+        }
+    }
     /**
      * Transport Post method
      * @param url
      * @param bodyObject
      * @returns Promise
      */
-    Transport.prototype.post = function (url, bodyObject) {
-        return tslib_1.__awaiter(this, void 0, void 0, function () {
-            var response, e_2;
-            return tslib_1.__generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 3, , 4]);
-                        return [4 /*yield*/, fetch(url, {
-                                body: JSON.stringify(bodyObject),
-                                cache: "no-cache",
-                                headers: this.headers,
-                                method: "POST",
-                                redirect: "follow",
-                                referrer: "no-referrer",
-                            })];
-                    case 1:
-                        response = _a.sent();
-                        return [4 /*yield*/, response.json()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                    case 3:
-                        e_2 = _a.sent();
-                        throw new Error(e_2);
-                    case 4: return [2 /*return*/];
-                }
+    async post(url, bodyObject) {
+        try {
+            const response = await cross_fetch_1.default(url, {
+                body: JSON.stringify(bodyObject),
+                cache: "no-cache",
+                headers: this.headers,
+                method: "POST",
+                redirect: "follow",
+                referrer: "no-referrer",
             });
-        });
-    };
-    return Transport;
-}());
-export { Transport };
+            return await response.json();
+        }
+        catch (e) {
+            throw new Error(e);
+        }
+    }
+}
+exports.Transport = Transport;
 //# sourceMappingURL=transport.js.map

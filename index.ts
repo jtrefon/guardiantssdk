@@ -1,7 +1,11 @@
-
+import { CryptoService } from "lib/cryptoService";
+import { Transport } from "lib/transport";
 export class Guardianbcsdk {
 
-    public getWallet(publicKey: string): string {
-return publicKey;
+    public getCryptoSerice(): CryptoService {
+        return CryptoService.prototype;
+    }
+    public getTransport(): Transport {
+        return Transport.prototype;
     }
 }
