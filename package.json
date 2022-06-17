@@ -1,6 +1,6 @@
 {
   "name": "guardianbcsdk",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Guardian blockchain SDK for TypeScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,6 @@
   "author": "Jacek Trefon <jack@trefon.com>",
   "license": "MIT",
   "devDependencies": {
-    "@types/crypto-js": "^4.1.1",
     "chai": "^4.3.6",
     "mocha": "^10.0.0",
     "tslint": "^6.1.3",

@@ -6,6 +6,8 @@
         "sourceMap": true,
         "declaration": true,
         "module": "commonjs",
+        "allowJs": true,
+        "checkJs": false,
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
         "importHelpers": true,

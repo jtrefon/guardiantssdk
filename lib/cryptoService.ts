@@ -1,5 +1,5 @@
 import sha256 from "crypto-js/sha256";
-import * as jse from "jsencrypt";
+import JSEncrypt from "jsencrypt";
 
 export class CryptoService {
     protected KeySize = "1024";
@@ -11,7 +11,7 @@ export class CryptoService {
      * keys are to be obtained via getPublicKey() and getPrivateKey()
      */
     public GenerateKeys(): void {
-        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+        const jsEnc = new JSEncrypt({ default_key_size: this.KeySize });
         this.PrivateKey = jsEnc.getPrivateKey();
         this.PublicKey = jsEnc.getPublicKey();
     }
@@ -23,7 +23,7 @@ export class CryptoService {
      * @returns string type signature
      */
     public Sign(payload: string, privateKey: string): string {
-        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+        const jsEnc = new JSEncrypt({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(privateKey);
         const signature = jsEnc.sign(payload, sha256, "sha256");
         return signature.toString();
@@ -37,7 +37,7 @@ export class CryptoService {
      * @returns boolean true or false
      */
     public Verify(payload: string, signature: string, publicKey: string): boolean {
-        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+        const jsEnc = new JSEncrypt({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(publicKey);
         return jsEnc.verify(payload, signature, sha256);
     }

@@ -1,5 +1,5 @@
 export declare class CryptoService {
-    protected KeySize: number;
+    protected KeySize: string;
     protected PublicKey: string;
     protected PrivateKey: string;
     /**
@@ -26,10 +26,10 @@ export declare class CryptoService {
      * RSA key accessor
      * @returns public key as string
      */
-    readonly getPublicKey: string;
+    get getPublicKey(): string;
     /**
      * RSA key accessor
      * @returns private key as string
      */
-    readonly getPrivateKey: string;
+    get getPrivateKey(): string;
 }

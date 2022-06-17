@@ -1,6 +1,6 @@
 export declare class Transport {
     protected headers: {
-        "Accept": string;
+        Accept: string;
         "Content-Type": string;
     };
     /**

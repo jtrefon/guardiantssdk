@@ -1,20 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.CryptoService = void 0;
 const tslib_1 = require("tslib");
 const sha256_1 = tslib_1.__importDefault(require("crypto-js/sha256"));
-const jse = tslib_1.__importStar(require("jsencrypt"));
+const jsencrypt_1 = tslib_1.__importDefault(require("jsencrypt"));
 class CryptoService {
-    constructor() {
-        this.KeySize = 1024;
-        this.PublicKey = "";
-        this.PrivateKey = "";
-    }
+    KeySize = "1024";
+    PublicKey = "";
+    PrivateKey = "";
     /**
      * Generates RSA key pair (default 1024)
      * keys are to be obtained via getPublicKey() and getPrivateKey()
      */
     GenerateKeys() {
-        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+        const jsEnc = new jsencrypt_1.default({ default_key_size: this.KeySize });
         this.PrivateKey = jsEnc.getPrivateKey();
         this.PublicKey = jsEnc.getPublicKey();
     }
@@ -25,9 +24,10 @@ class CryptoService {
      * @returns string type signature
      */
     Sign(payload, privateKey) {
-        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+        const jsEnc = new jsencrypt_1.default({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(privateKey);
-        return jsEnc.sign(payload, sha256_1.default, "sha256");
+        const signature = jsEnc.sign(payload, sha256_1.default, "sha256");
+        return signature.toString();
     }
     /**
      * RSA signature verification
@@ -37,7 +37,7 @@ class CryptoService {
      * @returns boolean true or false
      */
     Verify(payload, signature, publicKey) {
-        const jsEnc = new jse.JSEncrypt({ default_key_size: this.KeySize });
+        const jsEnc = new jsencrypt_1.default({ default_key_size: this.KeySize });
         jsEnc.setPrivateKey(publicKey);
         return jsEnc.verify(payload, signature, sha256_1.default);
     }

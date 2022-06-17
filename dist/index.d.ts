@@ -1,3 +1,6 @@
+import { CryptoService } from "lib/cryptoService";
+import { Transport } from "lib/transport";
 export declare class Guardianbcsdk {
-    getWallet(publicKey: string): string;
+    getCryptoSerice(): CryptoService;
+    getTransport(): Transport;
 }

@@ -1,14 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Transport = void 0;
 const tslib_1 = require("tslib");
 const cross_fetch_1 = tslib_1.__importDefault(require("cross-fetch"));
 class Transport {
-    constructor() {
-        this.headers = {
-            "Accept": "application/json",
-            "Content-Type": "application/json",
-        };
-    }
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+    };
     /**
      * Transport Get method
      * @param url
@@ -16,7 +15,7 @@ class Transport {
      */
     async get(url) {
         try {
-            const response = await cross_fetch_1.default(url, {
+            const response = await (0, cross_fetch_1.default)(url, {
                 cache: "no-cache",
                 headers: this.headers,
                 redirect: "follow",
@@ -36,7 +35,7 @@ class Transport {
      */
     async post(url, bodyObject) {
         try {
-            const response = await cross_fetch_1.default(url, {
+            const response = await (0, cross_fetch_1.default)(url, {
                 body: JSON.stringify(bodyObject),
                 cache: "no-cache",
                 headers: this.headers,
